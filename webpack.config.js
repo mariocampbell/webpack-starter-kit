@@ -1,9 +1,15 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const Dotenv = require('dotenv-webpack');
+const path = require('path');
 
 module.exports = {
-  entry: './src/app.js',
+  entry: ['@babel/polyfill', path.join(__dirname, 'src', 'app.js')],
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'js/app.bundle.js',
+    publicPath: '/',
+  },
   module: {
     rules: [
       {
